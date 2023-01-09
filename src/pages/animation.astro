@@ -6,6 +6,9 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="CSS animations for the bois">
   <main>
     <h2>Animations!</h2>
+    <div class="parent-sq">
+      <div class="child-sq"></div>
+    </div>
   </main>
 </Layout>
 
@@ -15,7 +18,7 @@ import Layout from "../layouts/Layout.astro";
     animation-name: slidein;
     animation-iteration-count: infinite;
     animation-direction: alternate; */
-    animation: 2s 1 ease-out slidein;
+    animation: slidein 2s infinite ease-out alternate;
     font-size: 2rem;
   }
   @keyframes slidein {
@@ -29,6 +32,36 @@ import Layout from "../layouts/Layout.astro";
     to {
       margin-left: 0%;
       width: 100%;
+    }
+  }
+  .parent-sq {
+    background-color: rgb(27, 27, 27);
+    width: 500px;
+    height: 500px;
+  }
+  .child-sq {
+    background-color: beige;
+    mix-blend-mode: difference;
+    width: 50%;
+    height: 50%;
+    will-change: transform;
+    animation: loop 5s infinite ease alternate;
+  }
+  .child-sq:hover {
+    animation-play-state: paused;
+  }
+  @keyframes loop {
+    from {
+      transform: translateX(0);
+    }
+    33% {
+      transform: translateX(100%);
+    }
+    66% {
+      transform: translateY(100%) translateX(100%);
+    }
+    to {
+      transform: translateX(0) translateY(100%);
     }
   }
 </style>
