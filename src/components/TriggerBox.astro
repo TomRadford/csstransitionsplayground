@@ -1,0 +1,100 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="box">
+  <div class="flyer-box">
+    <button class="flyer">{title}</button>
+  </div>
+  <button id="trigger" class="trigger">Trigger</button>
+</div>
+
+<script>
+  const trigger = document.querySelector("#trigger");
+  const wee = document.querySelector(".flyer");
+  trigger.addEventListener("click", (e) => {
+    if (wee.className.includes("flyer-move")) {
+      console.log(wee.className.split("flyer-move")[0]);
+      wee.className = wee.className.split("flyer-move")[0].trim();
+    } else {
+      wee.className = `${wee.className} flyer-move`;
+    }
+  });
+</script>
+
+<style>
+  .box {
+    border-style: solid;
+    border-color: #2b2b2b;
+    border-width: 1px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32rem;
+    overflow: hidden;
+  }
+
+  .trigger {
+    color: white;
+    margin: 20px;
+    background-color: rgb(96, 64, 209);
+    font-weight: 600;
+    font-size: 1.45rem;
+    padding: 0.6rem 1rem 0.6rem 1rem;
+    border-style: none;
+    border-radius: 8px;
+    will-change: transform;
+    transition: transform 800ms ease-out;
+    text-transform: none;
+  }
+
+  .trigger:hover {
+    transform: scale(1.05);
+    transition: transform 250ms ease-in;
+  }
+
+  .trigger:active {
+    transform: scale(1);
+    transition: transform 50ms ease-out;
+  }
+
+  .flyer-box {
+    margin: 0px;
+    padding: 0px;
+    height: 30rem;
+  }
+
+  .flyer {
+    background-color: rgb(78, 22, 110);
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    transform: translateY(-80px);
+    will-change: transform;
+    transition: transform 500ms;
+    transition-timing-function: cubic-bezier(0.33, 0.95, 0.34, 0.9);
+  }
+
+  .flyer-move {
+    transform: translateY(15rem);
+    transition-timing-function: cubic-bezier(0.54, 0.43, 0.11, 0.88);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+    .btn:hover {
+      transition: none;
+    }
+    .flyer {
+      transition: none;
+    }
+  }
+</style>

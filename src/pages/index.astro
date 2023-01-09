@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TriggerBox from "../components/TriggerBox.astro";
+---
+
+<Layout title="CSS animations for the bois">
+  <main>
+    <button class="btn">Hello World</button>
+    <br />
+    <TriggerBox title="weeee!" />
+  </main>
+
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: slateblue;
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1;
+      border-style: none;
+      /* Quick enter animation */
+      transition: transform 1000ms, background-color 800ms;
+      transition-delay: 200ms;
+      /* Allow GPU to handle this element all the time */
+      will-change: transform height;
+      /* Default transition timing function:
+  transition-timing-function: ease;  */
+      /* Josh's exagerrated ease-out */
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    .btn:hover {
+      /* Exit custom transition */
+      transition: transform 100ms, background-color 800ms;
+      /* Cheap to animate (HW acceleration) */
+      transform: translateY(-10px);
+      /* opacity: 0; */
+      /* Expensive to animate: */
+      background-color: blueviolet;
+      /* height: 150px; */
+    }
+  </style>
+</Layout>
