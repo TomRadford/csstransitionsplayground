@@ -4,64 +4,64 @@ import Layout from "../layouts/Layout.astro";
 
 <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations -->
 <Layout title="CSS animations for the bois">
-  <main>
-    <h2>Animations!</h2>
-    <div class="parent-sq">
-      <div class="child-sq"></div>
-    </div>
-  </main>
+	<main>
+		<h2>Animations!</h2>
+		<div class="parent-sq">
+			<div class="child-sq"></div>
+		</div>
+	</main>
 </Layout>
 
 <style>
-  h2 {
-    /* animation-duration: 3s;
+	h2 {
+		/* animation-duration: 3s;
     animation-name: slidein;
     animation-iteration-count: infinite;
     animation-direction: alternate; */
-    animation: slidein 2s infinite ease-out alternate;
-    font-size: 2rem;
-  }
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 300%;
-    }
-    50% {
-      color: aquamarine;
-    }
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
-  .parent-sq {
-    background-color: rgb(27, 27, 27);
-    width: 500px;
-    height: 500px;
-  }
-  .child-sq {
-    background-color: beige;
-    mix-blend-mode: difference;
-    width: 50%;
-    height: 50%;
-    will-change: transform;
-    animation: loop 5s infinite ease alternate;
-  }
-  .child-sq:hover {
-    animation-play-state: paused;
-  }
-  @keyframes loop {
-    from {
-      transform: translateX(0);
-    }
-    33% {
-      transform: translateX(100%);
-    }
-    66% {
-      transform: translateY(100%) translateX(100%);
-    }
-    to {
-      transform: translateX(0) translateY(100%);
-    }
-  }
+		animation: slidein 2s infinite ease-out alternate;
+		font-size: 2rem;
+	}
+	@keyframes slidein {
+		from {
+			margin-left: 100%;
+			width: 300%;
+		}
+		50% {
+			color: aquamarine;
+		}
+		to {
+			margin-left: 0%;
+			width: 100%;
+		}
+	}
+	.parent-sq {
+		background-color: rgb(27, 27, 27);
+		width: 500px;
+		height: 500px;
+	}
+	.child-sq {
+		background-color: beige;
+		mix-blend-mode: difference;
+		width: 50%;
+		height: 50%;
+		will-change: transform;
+		animation: loop 5s 2 ease alternate;
+	}
+	.child-sq:hover {
+		animation-play-state: paused;
+	}
+	@keyframes loop {
+		from {
+			transform: translateX(0);
+		}
+		33% {
+			transform: translateX(100%);
+		}
+		66% {
+			transform: translateY(100%) translateX(100%);
+		}
+		to {
+			transform: translateX(0) translateY(100%);
+		}
+	}
 </style>
